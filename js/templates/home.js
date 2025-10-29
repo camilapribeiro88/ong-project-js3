@@ -24,10 +24,15 @@ export default function Home(){
         </div>
       </div>
     </section>
-
-    <script>
-      document.getElementById('btnOpenModal')?.addEventListener('click', ()=> openModal('#modalExemplo'));
-      document.getElementById('btnToast')?.addEventListener('click', ()=> fireToast('Bem-vinda à Home!'));
-    </script>
   `;
+}
+
+// Função de inicialização chamada pelo router após renderizar a Home
+export function HomeInit(){
+  document.getElementById('btnOpenModal')?.addEventListener('click', () => {
+    openModal('#modalExemplo');
+  });
+  document.getElementById('btnToast')?.addEventListener('click', () => {
+    fireToast('Bem-vinda à Home!');
+  });
 }
