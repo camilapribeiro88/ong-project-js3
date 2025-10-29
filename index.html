@@ -85,13 +85,10 @@
   <div id="app-toast" class="toast"></div>
 
   <!-- ===== BOOT DA SPA (FUNCIONA NO GITHUB PAGES) ===== -->
-  <script type="module">
-    import "./js/app.js";
-    import { initRouter, mountRoute } from "./js/router.js";
-
-    initRouter();
-    mountRoute("home");
-  </script>
-
-</body>
-</html>
+  <!-- Boot da SPA (funciona no GitHub Pages) -->
+<script type="module">
+  import "./js/app.js";
+  import { initRouter, mountRoute } from "./js/router.js";
+  initRouter();
+  mountRoute("home");
+</script>
