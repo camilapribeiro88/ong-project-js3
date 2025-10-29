@@ -1,22 +1,19 @@
-import Home from "./templates/home.js";
+import Home, { HomeInit } from "./templates/home.js";
 import Projetos from "./templates/projetos.js";
 import Cadastro, { CadastroInit } from "./templates/cadastro.js";
 
 const routes = {
-  home: { view: Home },
+  home:     { view: Home,     init: HomeInit },
   projetos: { view: Projetos },
   cadastro: { view: Cadastro, init: CadastroInit }
 };
 
 export function mountRoute(route) {
   const page = routes[route] ?? routes.home;
-
   const app = document.getElementById('app');
-  app.innerHTML = page.view(); // insere HTML
+  app.innerHTML = page.view();
 
-  // se a página tiver função init, executa aqui:
-  if (page.init) page.init();
-
+  if (page.init) page.init();   // <- chama init da rota
   bindRouteLinks();
 }
 
