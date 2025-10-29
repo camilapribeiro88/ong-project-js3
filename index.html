@@ -4,19 +4,23 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ONG SPA — Entrega III (JS Avançado)</title>
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
- <link rel="stylesheet" href="./css/styles.css?v=4" />
+  <link rel="stylesheet" href="./css/styles.css?v=4" />
 </head>
+
 <body>
   <a class="skip-to-content" href="#app">Pular para o conteúdo</a>
 
+  <!-- ======= HEADER ======= -->
   <header class="site-header">
     <div class="container grid grid-12 align-center">
       <div class="col-3 col-md-6 col-sm-8 flex items-center">
         <button class="btn-hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="menuMobile">
           <span></span><span></span><span></span>
         </button>
+
         <a class="brand" href="#" data-route="home">
           <img src="./img/logo.svg" alt="Logo" />
           <span>ONG SPA</span>
@@ -26,12 +30,14 @@
       <nav class="col-9 col-md-6 col-sm-4 main-nav">
         <ul class="menu">
           <li><a href="#" data-route="home">Início</a></li>
+
           <li class="has-dropdown">
             <button class="dropdown-trigger" aria-haspopup="true" aria-expanded="false">Projetos</button>
             <ul class="dropdown" role="menu">
               <li><a role="menuitem" href="#" data-route="projetos">Todos os Projetos</a></li>
             </ul>
           </li>
+
           <li><a href="#" data-route="cadastro">Cadastro</a></li>
           <li><a class="btn btn--primary btn--sm" href="#" data-route="cadastro">Doar</a></li>
         </ul>
@@ -45,41 +51,4 @@
         <li class="has-dropdown">
           <button class="dropdown-trigger" aria-haspopup="true" aria-expanded="false">Projetos</button>
           <ul class="dropdown" role="menu">
-            <li><a role="menuitem" href="#" data-route="projetos">Todos os Projetos</a></li>
-          </ul>
-        </li>
-        <li><a href="#" data-route="cadastro">Cadastro</a></li>
-        <li><a class="btn btn--primary btn--sm" href="#" data-route="cadastro">Doar</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- Conteúdo dinâmico da SPA -->
-  <main id="app" class="container section" aria-label="Conteúdo principal"></main>
-
-  <!-- Modal global -->
-  <div id="modalExemplo" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
-    <div class="modal__dialog" role="document">
-      <header class="modal__header">
-        <h3 id="modalTitle" class="h3">Exemplo de Modal</h3>
-        <button class="btn btn--icon" data-close-modal aria-label="Fechar modal">×</button>
-      </header>
-      <div class="modal__body">
-        <p>Este modal é controlado por JavaScript (SPA).</p>
-      </div>
-      <footer class="modal__footer">
-        <button class="btn btn--secondary" data-close-modal>Cancelar</button>
-        <button class="btn btn--primary">Confirmar</button>
-      </footer>
-    </div>
-  </div>
-
-  <!-- Toast -->
-  <div class="toast" role="status" aria-live="polite" hidden>
-    <span>Item adicionado com sucesso!</span>
-  </div>
-
-  <!-- App como módulo -->
-  <script type="module" src="./js/app.js"></script>
-</body>
-</html>
+            <li><a role="menuitem" href="#" d
