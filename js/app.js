@@ -1,49 +1,37 @@
-import { mountRoute, initRouter } from "./router.js";
-import { initStore } from "./store.js";
-
-// Menu hambúrguer
-const btnHamb = document.querySelector('.btn-hamburger');
-const mobileNav = document.getElementById('menuMobile');
-if (btnHamb && mobileNav) {
-  btnHamb.addEventListener('click', () => {
-    const isOpen = !mobileNav.hasAttribute('hidden');
-    if (isOpen) {
-      mobileNav.setAttribute('hidden', '');
-      btnHamb.setAttribute('aria-expanded', 'false');
-    } else {
-      mobileNav.removeAttribute('hidden');
-      btnHamb.setAttribute('aria-expanded', 'true');
-    }
-  });
+// === TOAST ===
+export function fireToast(message){
+  const toast = document.getElementById('app-toast');
+  if(!toast) return;
+  toast.textContent = message;
+  toast.classList.add('is-visible');
+  setTimeout(()=> toast.classList.remove('is-visible'), 2500);
 }
 
-// Utilitários globais (usados nos templates)
-export function openModal(id) { document.querySelector(id)?.removeAttribute('hidden'); }
-export function closeModal(el) { el.closest('.modal')?.setAttribute('hidden',''); }
-export function fireToast(msg = "Ação realizada!") {
-  const toast = document.querySelector('.toast');
-  if (!toast) return;
-  toast.textContent = msg;
-  toast.removeAttribute('hidden');
-  requestAnimationFrame(()=> toast.classList.add('is-visible'));
-  setTimeout(()=>{
-    toast.classList.remove('is-visible');
-    setTimeout(()=> toast.setAttribute('hidden',''), 250);
-  }, 2200);
+// === MODAL ===
+export function openModal(selector){
+  const modal = document.querySelector(selector);
+  if(!modal) return;
+  modal.removeAttribute('hidden');
 }
 
-// Fechar modal com ESC + botões [data-close-modal]
+export function closeModal(selector){
+  const modal = document.querySelector(selector);
+  if(!modal) return;
+  modal.setAttribute('hidden','');
+}
+
+// Fecha modal com ESC
 document.addEventListener('keydown', (e)=>{
-  if(e.key === 'Escape'){
-    document.querySelectorAll('.modal').forEach(m=> m.setAttribute('hidden',''));
+  if(e.key === "Escape"){
+    document.querySelectorAll('.modal:not([hidden])')
+      .forEach(m => m.setAttribute('hidden',''));
   }
 });
-document.addEventListener('click', (e)=>{
-  const btn = e.target.closest('[data-close-modal]');
-  if (btn) closeModal(btn);
-});
 
-// Inicialização
-initStore();
-initRouter();
-mountRoute('home'); // rota padrão
+// Botões com atributo data-close-modal
+document.addEventListener('click', (e)=>{
+  if(e.target.matches('[data-close-modal]')){
+    const modal = e.target.closest('.modal');
+    modal?.setAttribute('hidden','');
+  }
+});
