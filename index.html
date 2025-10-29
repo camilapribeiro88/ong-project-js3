@@ -7,13 +7,13 @@
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./css/styles.css?v=4" />
+  <link rel="stylesheet" href="./css/styles.css?v=6" />
 </head>
 
 <body>
   <a class="skip-to-content" href="#app">Pular para o conteúdo</a>
 
-  <!-- ======= HEADER ======= -->
+  <!-- ===== HEADER ===== -->
   <header class="site-header">
     <div class="container grid grid-12 align-center">
       <div class="col-3 col-md-6 col-sm-8 flex items-center">
@@ -44,11 +44,54 @@
       </nav>
     </div>
 
-    <!-- Navegação Mobile -->
+    <!-- Nav Mobile -->
     <nav id="menuMobile" class="mobile-nav" hidden>
       <ul>
         <li><a href="#" data-route="home">Início</a></li>
         <li class="has-dropdown">
           <button class="dropdown-trigger" aria-haspopup="true" aria-expanded="false">Projetos</button>
           <ul class="dropdown" role="menu">
-            <li><a role="menuitem" href="#" d
+            <li><a role="menuitem" href="#" data-route="projetos">Todos os Projetos</a></li>
+          </ul>
+        </li>
+        <li><a href="#" data-route="cadastro">Cadastro</a></li>
+        <li><a class="btn btn--primary btn--sm" href="#" data-route="cadastro">Doar</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== ÁREA QUE A SPA SUBSTITUI ===== -->
+  <main id="app" class="container section" aria-label="Conteúdo principal"></main>
+
+  <!-- ===== MODAL ===== -->
+  <div id="modalExemplo" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal__dialog" role="document">
+      <header class="modal__header">
+        <h3 id="modalTitle" class="h3">Exemplo de Modal</h3>
+        <button class="btn btn--icon" data-close-modal aria-label="Fechar modal">×</button>
+      </header>
+
+      <div class="modal__body">
+        <p>Este modal é controlado por JavaScript (SPA).</p>
+      </div>
+
+      <footer class="modal__footer">
+        <button class="btn btn--ghost" data-close-modal>Fechar</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- ===== TOAST ===== -->
+  <div id="app-toast" class="toast"></div>
+
+  <!-- ===== BOOT DA SPA (FUNCIONA NO GITHUB PAGES) ===== -->
+  <script type="module">
+    import "./js/app.js";
+    import { initRouter, mountRoute } from "./js/router.js";
+
+    initRouter();
+    mountRoute("home");
+  </script>
+
+</body>
+</html>
